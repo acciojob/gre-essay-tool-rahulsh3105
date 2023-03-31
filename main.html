@@ -5,9 +5,17 @@
     <title>GRE Essay Tool</title>
 </head>
 <body>
-    <h1>GRE Essay Tool</h1>
-    <textarea id="evaluatedText" rows="10" cols="50"></textarea>
-    <h3>Word Count: <span id="wordCount">0</span></h3>
-    <script src="script.js"></script>
+  <label for="evaluatedText">Essay:</label>
+  <textarea id="evaluatedText" name="evaluatedText" rows="10" cols="50" oninput="countWords()"></textarea>
+  <h3 id="wordCount"></h3>
+
+  <script>
+    function countWords() {
+      const text = document.getElementById("evaluatedText").value.trim();
+      const wordCount = text === "" ? 0 : text.match(/\S+/g).length;
+      document.getElementById("wordCount").innerText = `${wordCount} words`;
+    }
+  </script>
 </body>
+
 </html>
